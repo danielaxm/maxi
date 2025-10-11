@@ -322,6 +322,16 @@ section {
   border-radius: 8px; 
 }
 
+.catalog-grid {
+  transition: opacity 0.4s ease;
+  opacity: 1;
+}
+
+.catalog-grid.fade-out {
+  opacity: 0;
+}
+
+
 
 .carousel {
   position: relative;
