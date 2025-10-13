@@ -53,6 +53,12 @@ section {
   pointer-events: none;
 }
 
+html {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+
 /* Garante que o menu mobile fica acima do overlay */
 .mobile-nav {
   z-index: 999;

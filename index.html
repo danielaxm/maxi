@@ -349,10 +349,20 @@ document.addEventListener("DOMContentLoaded", () => {
     mobileNav.classList.remove("active");
     if (overlay) overlay.classList.remove("active");
 
-    // aguarda 300ms e faz scroll suave
     setTimeout(() => {
-      document.querySelector(targetId)?.scrollIntoView({ behavior: "smooth" });
-    }, 300);
+  const target = document.querySelector(targetId);
+  if (target) {
+    const headerOffset = document.querySelector(".header")?.offsetHeight || 0;
+    const elementPosition = target.getBoundingClientRect().top + window.scrollY;
+    const offsetPosition = elementPosition - headerOffset;
+
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: "smooth"
+    });
+  }
+}, 400);
+
   });
 });
 
