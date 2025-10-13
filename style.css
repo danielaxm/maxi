@@ -50,7 +50,7 @@ section {
 
 .overlay.active {
   opacity: 1;
-  pointer-events: auto;
+  pointer-events: none;
 }
 
 /* Garante que o menu mobile fica acima do overlay */

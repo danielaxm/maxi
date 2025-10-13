@@ -31,14 +31,6 @@
           <a href="#contato">Contato</a>
         </div>
       </div>
-    
-      <div class="mobile-nav" id="mobileNav">
-        <button class="close-btn" id="closeBtn">✕</button>
-        <a href="#sobre">Sobre nós</a>
-        <a href="#duvida">Como funciona?</a>
-        <a href="#contato">Contato</a>
-      </div>
-    </div>
 
     <div class="overlay" id="overlay"></div>
     
@@ -348,13 +340,22 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
 
-    mobileNav.querySelectorAll("a").forEach(link => 
-      link.addEventListener("click", () => {
-        mobileNav.classList.remove("active");
-        // ADIÇÃO: remove fundo escuro ao clicar em um link do menu
-        if (overlay) overlay.classList.remove("active");
-      })
-    );
+    mobileNav.querySelectorAll("a").forEach(link => {
+  link.addEventListener("click", (e) => {
+    e.preventDefault(); // impede o salto instantâneo
+    const targetId = link.getAttribute("href");
+
+    // fecha o menu e o overlay primeiro
+    mobileNav.classList.remove("active");
+    if (overlay) overlay.classList.remove("active");
+
+    // aguarda 300ms e faz scroll suave
+    setTimeout(() => {
+      document.querySelector(targetId)?.scrollIntoView({ behavior: "smooth" });
+    }, 300);
+  });
+});
+
 
     // ADIÇÃO: fecha o menu ao clicar no overlay
     if (overlay) {
