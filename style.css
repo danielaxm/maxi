@@ -34,32 +34,6 @@ section {
   height: 10vh;
 }
 
-/* 🔥 Efeito transparente de fundo quando o menu mobile está aberto */
-.overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.6);
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
-  z-index: 998;
-}
-
-.overlay.active {
-  opacity: 1;
-  pointer-events: none;
-}
-
-html {
-  scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch;
-}
-
-
-/* Garante que o menu mobile fica acima do overlay */
 .mobile-nav {
   z-index: 999;
 }
@@ -574,7 +548,7 @@ html {
   .duvida p,
   .catalogo p,
   .contato p {
-    font-size: 0.7rem;
+    font-size: 0.8rem;
   }
   
 }

@@ -318,62 +318,21 @@ document.addEventListener("DOMContentLoaded", () => {
   const closeBtn = document.getElementById("closeBtn");
   const overlay = document.getElementById("overlay");
 
-  if (menuBtn && mobileNav) {
-    menuBtn.addEventListener("click", () => {
-      mobileNav.classList.toggle("active");
+   if (menuBtn && mobileNav) {
+      menuBtn.addEventListener("click", () => {
+        mobileNav.classList.toggle("active");
+      });
 
-      // ADIÇÃO: controla o fundo escuro ao abrir/fechar o menu
-      if (overlay) {
-        if (mobileNav.classList.contains("active")) {
-          overlay.classList.add("active");
-        } else {
-          overlay.classList.remove("active");
-        }
+      if (closeBtn) {
+        closeBtn.addEventListener("click", () => {
+          mobileNav.classList.remove("active");
+        });
       }
-    });
 
-    if (closeBtn) {
-      closeBtn.addEventListener("click", () => {
-        mobileNav.classList.remove("active");
-        // ADIÇÃO: remove fundo escuro ao clicar no X
-        if (overlay) overlay.classList.remove("active");
-      });
-    }
-
-    mobileNav.querySelectorAll("a").forEach(link => {
-  link.addEventListener("click", (e) => {
-    e.preventDefault(); // impede o salto instantâneo
-    const targetId = link.getAttribute("href");
-
-    // fecha o menu e o overlay primeiro
-    mobileNav.classList.remove("active");
-    if (overlay) overlay.classList.remove("active");
-
-    setTimeout(() => {
-  const target = document.querySelector(targetId);
-  if (target) {
-    const headerOffset = document.querySelector(".header")?.offsetHeight || 0;
-    const elementPosition = target.getBoundingClientRect().top + window.scrollY;
-    const offsetPosition = elementPosition - headerOffset;
-
-    window.scrollTo({
-      top: offsetPosition,
-      behavior: "smooth"
-    });
-  }
-}, 400);
-
-  });
-});
-
-
-    // ADIÇÃO: fecha o menu ao clicar no overlay
-    if (overlay) {
-      overlay.addEventListener("click", () => {
-        mobileNav.classList.remove("active");
-        overlay.classList.remove("active");
-      });
-    }
+      mobileNav.querySelectorAll("a").forEach(link =>
+        link.addEventListener("click", () => {
+          mobileNav.classList.remove("active");
+        }));
   }
 
   // --- Filtro de catálogo ---
