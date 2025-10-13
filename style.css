@@ -13,6 +13,11 @@ html, body {
   scroll-behavior: smooth;
 }
 
+section {
+  scroll-margin-top: var(--header-height);
+}
+
+
 .divnav {
   width: 100%;
 }
