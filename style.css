@@ -397,7 +397,7 @@ section {
   margin-bottom: 0.625rem;
 }
 .contato p {
-  font-size: 1rem;
+  font-size: 0.8rem;
   margin-bottom: 0.5rem;
   margin-top: 1rem;
 }
@@ -407,11 +407,34 @@ section {
     gap: 1rem;
     margin-top: 1rem;
 }
-.wpp1, .wpp2 {
+
+.dm {
     display: flex;
     color: #a7a7a7;
     background-color: #ffffff;
     color: #000;
+    font-size: 0.8rem; 
+    padding: 0.5rem 0.5rem;
+    height: auto; 
+    gap: 1rem;
+    border-radius: 0.5rem;
+    white-space: nowrap;
+    text-decoration: none;
+    align-items: center;
+    width: min-content;
+}
+
+.containerbotao2{
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.wpp {
+    display: flex;
+    color: #a7a7a7;
+    background-color: #ffffff1c;
+    color: #ffffff;
     font-size: 0.8rem; 
     padding: 0.5rem 0.5rem;
     height: auto; 
