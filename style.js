@@ -26,6 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
   
+  
   const filterButtons = document.querySelectorAll(".tab-button");
   const catalogItems = document.querySelectorAll(".catalog-grid .item");
   const catalogoSection = document.querySelector(".catalogo");

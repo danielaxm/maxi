@@ -22,7 +22,15 @@
         <a href="#contato" class="nav-link">Contato</a>
       </div>
 
-      <button class="menu-btn">☰</button>
+        <button class="menu-btn">☰</button>
+
+        <div class="mobile-nav" id="mobileNav">
+          <button class="close-btn" id="closeBtn">✕</button>
+          <a href="#sobre">Sobre nós</a>
+          <a href="#duvida">Como funciona?</a>
+          <a href="#contato">Contato</a>
+        </div>
+      </div>
     
       <div class="mobile-nav" id="mobileNav">
         <button class="close-btn" id="closeBtn">✕</button>
@@ -32,6 +40,8 @@
       </div>
     </div>
 
+    <div class="overlay" id="overlay"></div>
+    
     <div class="container" id="home">
       <div class="slogan">
         <h1>MAXI</h1>
@@ -52,7 +62,8 @@
         No fim das contas, não é só sobre usar, é sobre se expressar, e isso é o máximo.
       </p>
       <p>
-        Pelas lentes de <Strong>@vilhenanetoo</Strong>.
+        Pelas lentes de <a href="https://www.instagram.com/vilhenanetoo?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+              class="arrobaneto">@vilhenanetoo<img src="" alt="" /></a> 📸.
       </p>
 
       <div class="sobre-carousel">
@@ -298,7 +309,7 @@
   </div> 
 
   <!-- ==================== JS Embutido ==================== -->
- <script>
+ <script> 
 document.addEventListener("DOMContentLoaded", () => {
   console.log("JS carregado!");
 
@@ -313,33 +324,66 @@ document.addEventListener("DOMContentLoaded", () => {
   const menuBtn = document.querySelector(".menu-btn");
   const mobileNav = document.getElementById("mobileNav");
   const closeBtn = document.getElementById("closeBtn");
+  const overlay = document.getElementById("overlay");
+
   if (menuBtn && mobileNav) {
-    menuBtn.addEventListener("click", () => mobileNav.classList.toggle("active"));
-    if (closeBtn) closeBtn.addEventListener("click", () => mobileNav.classList.remove("active"));
-    mobileNav.querySelectorAll("a").forEach(link => link.addEventListener("click", () => mobileNav.classList.remove("active")));
+    menuBtn.addEventListener("click", () => {
+      mobileNav.classList.toggle("active");
+
+      // ADIÇÃO: controla o fundo escuro ao abrir/fechar o menu
+      if (overlay) {
+        if (mobileNav.classList.contains("active")) {
+          overlay.classList.add("active");
+        } else {
+          overlay.classList.remove("active");
+        }
+      }
+    });
+
+    if (closeBtn) {
+      closeBtn.addEventListener("click", () => {
+        mobileNav.classList.remove("active");
+        // ADIÇÃO: remove fundo escuro ao clicar no X
+        if (overlay) overlay.classList.remove("active");
+      });
+    }
+
+    mobileNav.querySelectorAll("a").forEach(link => 
+      link.addEventListener("click", () => {
+        mobileNav.classList.remove("active");
+        // ADIÇÃO: remove fundo escuro ao clicar em um link do menu
+        if (overlay) overlay.classList.remove("active");
+      })
+    );
+
+    // ADIÇÃO: fecha o menu ao clicar no overlay
+    if (overlay) {
+      overlay.addEventListener("click", () => {
+        mobileNav.classList.remove("active");
+        overlay.classList.remove("active");
+      });
+    }
   }
 
+  // --- Filtro de catálogo ---
   const filterButtons = document.querySelectorAll(".tab-button");
   const catalogItems = document.querySelectorAll(".catalog-grid .item");
   const catalogoSection = document.querySelector(".catalogo");
 
   function filterCatalog(category) {
-  const catalogGrid = document.querySelector(".catalog-grid");
+    const catalogGrid = document.querySelector(".catalog-grid");
+    catalogGrid.classList.add("fade-out");
 
-  
-  catalogGrid.classList.add("fade-out");
+    setTimeout(() => {
+      catalogItems.forEach(item => {
+        item.style.display = item.classList.contains(category) ? "block" : "none";
+      });
 
-  setTimeout(() => {
-    catalogItems.forEach(item => {
-      item.style.display = item.classList.contains(category) ? "block" : "none";
-    });
-
-   
-    catalogoSection.classList.remove("dourado-ativo", "prata-ativo");
-    catalogoSection.classList.add(category + "-ativo");
-    catalogGrid.classList.remove("fade-out");
-  }, 300); 
-}
+      catalogoSection.classList.remove("dourado-ativo", "prata-ativo");
+      catalogoSection.classList.add(category + "-ativo");
+      catalogGrid.classList.remove("fade-out");
+    }, 300); 
+  }
 
   let activeBtn = document.querySelector(".tab-button.active") || filterButtons[0];
   if (activeBtn) {
@@ -356,7 +400,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // --- Mini carrossel em cada item (selector matches your HTML) ---
+  // --- Mini carrossel em cada item ---
   const carousels = document.querySelectorAll(".carousel");
   carousels.forEach(carousel => {
     const imgs = carousel.querySelectorAll("img");
@@ -371,7 +415,6 @@ document.addEventListener("DOMContentLoaded", () => {
       imgs[index].classList.add("active");
     }
 
-    // garante que a primeira imagem comece visível
     showImage(current);
 
     if (prevBtn) {
@@ -389,7 +432,6 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
 
-    // esconde setas se só houver 1 imagem ou se botões não existirem
     if (imgs.length === 1) {
       if (prevBtn) prevBtn.style.display = "none";
       if (nextBtn) nextBtn.style.display = "none";
@@ -397,46 +439,45 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // --- Carrossel automático da seção "Sobre nós" ---
- // --- Carrossel automático da seção "Sobre nós" ---
-const sobreCarousel = document.querySelector(".sobre-carousel");
-if (sobreCarousel) {
-  const imgs = sobreCarousel.querySelectorAll("img");
-  const dotsContainer = document.querySelector(".carousel-dots");
+  const sobreCarousel = document.querySelector(".sobre-carousel");
+  if (sobreCarousel) {
+    const imgs = sobreCarousel.querySelectorAll("img");
+    const dotsContainer = document.querySelector(".carousel-dots");
 
-  if (imgs.length > 0) {
-    let current = 0;
+    if (imgs.length > 0) {
+      let current = 0;
 
-    // Cria os pontinhos dinamicamente
-    imgs.forEach((_, i) => {
-      const dot = document.createElement("div");
-      dot.classList.add("dot");
-      if (i === 0) dot.classList.add("active");
-      dot.addEventListener("click", () => {
-        current = i;
-        showSobre(current);
+      imgs.forEach((_, i) => {
+        const dot = document.createElement("div");
+        dot.classList.add("dot");
+        if (i === 0) dot.classList.add("active");
+        dot.addEventListener("click", () => {
+          current = i;
+          showSobre(current);
+        });
+        dotsContainer.appendChild(dot);
       });
-      dotsContainer.appendChild(dot);
-    });
 
-    const dots = dotsContainer.querySelectorAll(".dot");
+      const dots = dotsContainer.querySelectorAll(".dot");
 
-    function showSobre(index) {
-      imgs.forEach(img => img.classList.remove("active"));
-      dots.forEach(dot => dot.classList.remove("active"));
-      imgs[index].classList.add("active");
-      dots[index].classList.add("active");
-    }
+      function showSobre(index) {
+        imgs.forEach(img => img.classList.remove("active"));
+        dots.forEach(dot => dot.classList.remove("active"));
+        imgs[index].classList.add("active");
+        dots[index].classList.add("active");
+      }
 
-    // inicia
-    showSobre(current);
-
-    // troca automática
-    setInterval(() => {
-      current = (current + 1) % imgs.length;
       showSobre(current);
-    }, 3000);
+
+      setInterval(() => {
+        current = (current + 1) % imgs.length;
+        showSobre(current);
+      }, 3000);
+    }
   }
-}
 
 });
 </script>
+
+</body>
+</html>
