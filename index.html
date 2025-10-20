@@ -31,8 +31,6 @@
           <a href="#contato">Contato</a>
         </div>
       </div>
-
-    <div class="overlay" id="overlay"></div>
     
     <div class="container" id="home">
       <div class="slogan">
@@ -107,15 +105,6 @@
         <button class="next">›</button>
       </div>
       <p>Colar Sol - R$10,00</p>
-    </div>
-
-    <div class="item dourado">
-      <div class="carousel">
-        <button class="prev">‹</button>
-        <img src="img/IMG_4713.JPG" class="catalog-img active">
-        <button class="next">›</button>
-      </div>
-      <p>Colar Joaninha - R$10,00</p>
     </div>
 
     <div class="item dourado">
@@ -205,7 +194,7 @@
         <img src="img/IMG_4745.JPG" class="catalog-img active">
         <button class="next">›</button>
       </div>
-      <p>Anéis Maxi - R$5,00 (cada). Indisponíveis ✖️: Pedra vermelha e anel M.</p>
+      <p>Anéis Maxi - R$5,00 (cada). Indisponíveis ✖️: Pedra vermelha, anel M e anel fininho.</p>
     </div>
     
 
@@ -217,15 +206,6 @@
         <button class="next">›</button>
       </div>
       <p>Colar Poodle - R$15,00</p>
-    </div>
-
-    <div class="item prata">
-      <div class="carousel">
-        <button class="prev">‹</button>
-        <img src="img/IMG_4735.JPG" class="catalog-img active">
-        <button class="next">›</button>
-      </div>
-      <p>Brinco + Piercing falso Borboleta/Brilhante - R$7,50</p>
     </div>
 
     <div class="item prata">
@@ -244,15 +224,6 @@
         <button class="next">›</button>
       </div>
       <p>Piercing brinco com strass - R$15,00</p>
-    </div>
-
-    <div class="item prata">
-      <div class="carousel">
-        <button class="prev">‹</button>
-        <img src="img/IMG_4734 (1).JPG" class="catalog-img active">
-        <button class="next">›</button>
-      </div>
-      <p>Piercing Falso Estrela - R$13,00</p>
     </div>
 
     <div class="item prata">
@@ -278,18 +249,12 @@
 
     <section id="contato" class="contato">
       <h2>Contatos</h2>
-      <p>Para realizar seu pedido, envie um print e o nome da peça que você deseja através do direct da MAXI!</p>
-      <div class="containerbotao">
-          <a href="https://ig.me/m/maxiiiii.exe"
-              class="dm">Direct da Maxi ☆<img src="" alt="" /></a>
-      </div>
-
-      <p>Caso ocorra bugs ou demora para atendimento pela DM, faça o mesmo processo de pedido através de algum dos números abaixo:</p>
+      <p>Para realizar seu pedido, envie um print e o nome da peça que você deseja através do número abaixo! Caso aja demora para respondermos no 1, envie mensagem para o número 2, mas não se preocupe: Respondemos rapidinho!</p>
       <div class="containerbotao2">
           <a href="https://wa.me/559295005200?text=Oii!%20Tenho%20interesse%20em%20comprar%20essa%20peça☆"
-              class="wpp">Marcelly<img src="" alt="" /></a>
+              class="wpp">★ Wpp 1 ★<img src="" alt="" /></a>
           <a href="https://wa.me/5592984260212?text=Oii!%20Tenho%20interesse%20em%20comprar%20essa%20peça☆"
-              class="wpp">Dani<img src="" alt="" /></a>
+              class="wpp">✮ Wpp 2 ✮<img src="" alt="" /></a>
       </div>
        <div class="containerbotao">
           <a href="https://www.instagram.com/maxiiiii.exe?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
@@ -300,19 +265,16 @@
     </section>
   </div> 
 
-  <!-- ==================== JS Embutido ==================== -->
  <script>
   document.addEventListener("DOMContentLoaded", () => {
     console.log("JS carregado!");
 
-    // Header height
     const header = document.querySelector(".header");
     if (header) {
       const headerHeight = header.offsetHeight;
       document.documentElement.style.setProperty("--header-height", `${headerHeight}px`);
     }
 
-    // Menu mobile (sem overlay)
     const menuBtn = document.querySelector(".menu-btn");
     const mobileNav = document.getElementById("mobileNav");
     const closeBtn = document.getElementById("closeBtn");
@@ -335,7 +297,6 @@
       );
     }
 
-    // Filtro de catálogo
     const filterButtons = document.querySelectorAll(".tab-button");
     const catalogItems = document.querySelectorAll(".catalog-grid .item");
     const catalogoSection = document.querySelector(".catalogo");
@@ -370,7 +331,6 @@
       });
     });
 
-    // Mini carrossel dos itens
     const carousels = document.querySelectorAll(".carousel");
     carousels.forEach(carousel => {
       const imgs = carousel.querySelectorAll("img");
@@ -401,7 +361,6 @@
       }
     });
 
-    // Carrossel automático "Sobre nós"
     const sobreCarousel = document.querySelector(".sobre-carousel");
     if (sobreCarousel) {
       const imgs = sobreCarousel.querySelectorAll("img");
