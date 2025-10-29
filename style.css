@@ -291,16 +291,17 @@ section {
 
 .catalog-tabs {
   display: flex;
-  gap: 1rem;
+  gap: 0.8rem;
   margin-bottom: 1.5rem;
 }
 
 .tab-button {
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 0.73rem;
   border: 2px solid transparent;
   background: #eee;
   cursor: pointer;
   font-family: "Lexend Exa", sans-serif;
+  font-size: 0.70rem;
   font-weight: 500;
   border-radius: 3.5px;
   transition: background 0.3s, border 0.3s;
@@ -323,6 +324,21 @@ section {
   background: #d9d9d9;
   border: 1px solid #7a7a7a;
 }
+
+.tab-button[data-filter="especial"] {
+  background: #fff1d6;
+}
+
+.tab-button.active[data-filter="especial"] {
+  background: #ff9100;
+  border: 1px solid #cc0000;
+}
+
+.catalogo.especial-ativo .item {
+  border-color: #cc0000;
+  color: #cc0000;
+}
+
 
 .catalog-grid .item {
   display: block;
