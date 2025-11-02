@@ -289,6 +289,11 @@ section {
   color: #7a7a7a;
 }
 
+.catalogo.especial-ativo .item {
+  border-color: #cc0000;
+  color: #cc0000;
+}
+
 .catalog-tabs {
   display: flex;
   gap: 0.8rem;
@@ -333,12 +338,6 @@ section {
   background: #ff9100;
   border: 1px solid #cc0000;
 }
-
-.catalogo.especial-ativo .item {
-  border-color: #cc0000;
-  color: #cc0000;
-}
-
 
 .catalog-grid .item {
   display: block;

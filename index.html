@@ -276,19 +276,18 @@
     const catalogoSection = document.querySelector(".catalogo");
 
     function filterCatalog(category) {
-      const catalogGrid = document.querySelector(".catalog-grid");
-      catalogGrid.classList.add("fade-out");
+      // Esconde ou mostra os itens conforme a categoria
+      catalogItems.forEach(item => {
+        item.style.display = item.classList.contains(category) ? "block" : "none";
+      });
 
-      setTimeout(() => {
-        catalogItems.forEach(item => {
-          item.style.display = item.classList.contains(category) ? "block" : "none";
-        });
+      // Remove qualquer cor de borda antiga antes de aplicar a nova
+      catalogoSection.classList.remove("dourado-ativo", "prata-ativo", "especial-ativo");
 
-        catalogoSection.classList.remove("dourado-ativo", "prata-ativo");
-        catalogoSection.classList.add(category + "-ativo");
-        catalogGrid.classList.remove("fade-out");
-      }, 300);
-    }
+      // Adiciona a cor correspondente ao botão clicado
+      catalogoSection.classList.add(category + "-ativo");
+  }
+
 
     let activeBtn = document.querySelector(".tab-button.active") || filterButtons[0];
     if (activeBtn) {
