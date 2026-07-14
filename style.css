@@ -289,9 +289,14 @@ section {
   color: #7a7a7a;
 }
 
+.catalogo.colors-ativo .item {
+  border-color: #007acc;
+  color: #007acc;
+}
+
 .catalogo.especial-ativo .item {
-  border-color: #cc0000;
-  color: #cc0000;
+  border-color: #da54ab;
+  color: #da54ab;
 }
 
 .catalog-tabs {
@@ -320,6 +325,10 @@ section {
   background: #f0f0f0;
 }
 
+.tab-button[data-filter="colors"] {
+  background: #b4f4ff;
+}
+
 .tab-button.active[data-filter="dourado"] {
   background: #ffcc66;
   border: 1px solid #b8860b;
@@ -330,13 +339,18 @@ section {
   border: 1px solid #7a7a7a;
 }
 
+.tab-button.active[data-filter="colors"] {
+  background: #00d9ff;
+  border: 1px solid #007acc;
+}
+
 .tab-button[data-filter="especial"] {
-  background: #fff1d6;
+  background: #fcd6ff;
 }
 
 .tab-button.active[data-filter="especial"] {
-  background: #ff9100;
-  border: 1px solid #cc0000;
+  background: #f7b4e0;
+  border: 1px solid #c473a7;
 }
 
 .catalog-grid .item {
